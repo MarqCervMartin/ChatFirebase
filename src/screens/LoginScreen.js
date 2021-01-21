@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Title } from 'react-native-paper';
 
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
+import Loading from '../components/Loading';
+import { AuthContext } from '../navigation/AuthProvider';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { login, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
       <View style={styles.container}>
@@ -28,9 +36,7 @@ export default function LoginScreen({ navigation }) {
             title="Login"
             modeValue="contained"
             labelStyle={styles.loginButtonLabel}
-            onPress={() => {
-              // TODO
-            }}
+            onPress={() => login(email, password)}
         />
         <FormButton
             title="Sign up here"

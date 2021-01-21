@@ -1,5 +1,8 @@
 import React, { createContext, useState } from 'react';
 
+import { kitty } from '../chatkitty';
+import { firebase } from '../firebase';
+
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
@@ -14,13 +17,56 @@ export const AuthProvider = ({ children }) => {
             loading,
             setLoading,
             login: async (email, password) => {
-              // TODO
+              setLoading(true);
+
+              let result = await kitty.startSession({
+                username: email,
+                authParams: {
+                  password: password,
+                },
+              });
+
+              setLoading(false);
+
+              if (result.failed) {
+                console.log('Could not login');
+              }
             },
             register: async (displayName, email, password) => {
-              // TODO
+              setLoading(true);
+
+              try {
+                await firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then((credential) => {
+                  credential.user
+                  .updateProfile({ displayName: displayName })
+                  .then(async () => {
+                    let result = await kitty.startSession({
+                      username: email,
+                      authParams: {
+                        password: password,
+                      },
+                    });
+
+                    if (result.failed) {
+                      console.log('Could not login');
+                    }
+                  });
+                });
+              } catch (e) {
+                console.log(e);
+              }
+
+              setLoading(false);
             },
             logout: async () => {
-              // TODO
+              try {
+                await kitty.endSession();
+              } catch (e) {
+                console.error(e);
+              }
             },
           }}
       >
