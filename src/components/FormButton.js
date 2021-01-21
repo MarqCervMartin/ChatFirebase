@@ -6,14 +6,14 @@ const { width, height } = Dimensions.get('screen');
 
 export default function FormButton({ title, modeValue, ...rest }) {
   return (
-      <Button
-          mode={modeValue}
-          {...rest}
-          style={styles.button}
-          contentStyle={styles.buttonContainer}
-      >
-        {title}
-      </Button>
+    <Button
+      mode={modeValue}
+      {...rest}
+      style={styles.button}
+      contentStyle={styles.buttonContainer}
+    >
+      {title}
+    </Button>
   );
 }
 

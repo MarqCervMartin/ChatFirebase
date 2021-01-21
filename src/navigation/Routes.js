@@ -30,8 +30,8 @@ export default function Routes() {
   }
 
   return (
-      <NavigationContainer>
-        {user ? <HomeStack /> : <AuthStack />}
-      </NavigationContainer>
+    <NavigationContainer>
+      {user ? <HomeStack /> : <AuthStack />}
+    </NavigationContainer>
   );
 }

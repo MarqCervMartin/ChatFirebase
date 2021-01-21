@@ -19,40 +19,40 @@ export default function SignupScreen({ navigation }) {
   }
 
   return (
-      <View style={styles.container}>
-        <Title style={styles.titleText}>Let's get started!</Title>
-        <FormInput
-            labelName="Display Name"
-            value={displayName}
-            autoCapitalize="none"
-            onChangeText={(userDisplayName) => setDisplayName(userDisplayName)}
-        />
-        <FormInput
-            labelName="Email"
-            value={email}
-            autoCapitalize="none"
-            onChangeText={(userEmail) => setEmail(userEmail)}
-        />
-        <FormInput
-            labelName="Password"
-            value={password}
-            secureTextEntry={true}
-            onChangeText={(userPassword) => setPassword(userPassword)}
-        />
-        <FormButton
-            title="Signup"
-            modeValue="contained"
-            labelStyle={styles.loginButtonLabel}
-            onPress={() => register(displayName, email, password)}
-        />
-        <IconButton
-            icon="keyboard-backspace"
-            size={30}
-            style={styles.navButton}
-            color="#5b3a70"
-            onPress={() => navigation.goBack()}
-        />
-      </View>
+    <View style={styles.container}>
+      <Title style={styles.titleText}>Let's get started!</Title>
+      <FormInput
+        labelName="Display Name"
+        value={displayName}
+        autoCapitalize="none"
+        onChangeText={(userDisplayName) => setDisplayName(userDisplayName)}
+      />
+      <FormInput
+        labelName="Email"
+        value={email}
+        autoCapitalize="none"
+        onChangeText={(userEmail) => setEmail(userEmail)}
+      />
+      <FormInput
+        labelName="Password"
+        value={password}
+        secureTextEntry={true}
+        onChangeText={(userPassword) => setPassword(userPassword)}
+      />
+      <FormButton
+        title="Signup"
+        modeValue="contained"
+        labelStyle={styles.loginButtonLabel}
+        onPress={() => register(displayName, email, password)}
+      />
+      <IconButton
+        icon="keyboard-backspace"
+        size={30}
+        style={styles.navButton}
+        color="#5b3a70"
+        onPress={() => navigation.goBack()}
+      />
+    </View>
   );
 }
 

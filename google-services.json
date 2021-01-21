@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1041975985573",
+    "firebase_url": "https://tester-of2020-default-rtdb.firebaseio.com",
+    "project_id": "tester-of2020",
+    "storage_bucket": "tester-of2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041975985573:android:3b84c4c6ea38822fcbd44c",
+        "android_client_info": {
+          "package_name": "com.chatkitty.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041975985573-jvv0nq1k1pcuvkt1br44vr7oa9hn8cne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4oeAvFu_Gc0WvkVwKVDfvl0fvh3fJ-bA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041975985573-jvv0nq1k1pcuvkt1br44vr7oa9hn8cne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

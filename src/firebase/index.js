@@ -1,8 +1,8 @@
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import '@firebase/auth';
 import '@firebase/firestore';
 
-// Replace this with your Firebase SDK config snippet
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyDFZP2FaWgyw2dP6ROJ-lHOIV0Cie6J63U",
     authDomain: "tester-of2020.firebaseapp.com",
@@ -11,11 +11,11 @@ const firebaseConfig = {
     storageBucket: "tester-of2020.appspot.com",
     messagingSenderId: "1041975985573",
     appId: "1:1041975985573:web:223482505adb2d70cbd44c",
-    measurementId: "G-793Z71QZ6J"
+    measurementId: "G-793Z71QZ6J",
 };
 
 if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 }
 
 export { firebase };

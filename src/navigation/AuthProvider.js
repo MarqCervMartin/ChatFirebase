@@ -10,37 +10,37 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   return (
-      <AuthContext.Provider
-          value={{
-            user,
-            setUser,
-            loading,
-            setLoading,
-            login: async (email, password) => {
-              setLoading(true);
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        loading,
+        setLoading,
+        login: async (email, password) => {
+          setLoading(true);
 
-              let result = await kitty.startSession({
-                username: email,
-                authParams: {
-                  password: password,
-                },
-              });
-
-              setLoading(false);
-
-              if (result.failed) {
-                console.log('Could not login');
-              }
+          let result = await kitty.startSession({
+            username: email,
+            authParams: {
+              password: password,
             },
-            register: async (displayName, email, password) => {
-              setLoading(true);
+          });
 
-              try {
-                await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password)
-                .then((credential) => {
-                  credential.user
+          setLoading(false);
+
+          if (result.failed) {
+            console.log('Could not login');
+          }
+        },
+        register: async (displayName, email, password) => {
+          setLoading(true);
+
+          try {
+            await firebase
+              .auth()
+              .createUserWithEmailAndPassword(email, password)
+              .then((credential) => {
+                credential.user
                   .updateProfile({ displayName: displayName })
                   .then(async () => {
                     let result = await kitty.startSession({
@@ -54,23 +54,23 @@ export const AuthProvider = ({ children }) => {
                       console.log('Could not login');
                     }
                   });
-                });
-              } catch (e) {
-                console.log(e);
-              }
+              });
+          } catch (e) {
+            console.log(e);
+          }
 
-              setLoading(false);
-            },
-            logout: async () => {
-              try {
-                await kitty.endSession();
-              } catch (e) {
-                console.error(e);
-              }
-            },
-          }}
-      >
-        {children}
-      </AuthContext.Provider>
+          setLoading(false);
+        },
+        logout: async () => {
+          try {
+            await kitty.endSession();
+          } catch (e) {
+            console.error(e);
+          }
+        },
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };

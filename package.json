@@ -1,38 +1,61 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "license": "MIT",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "lint": "eslint .",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.js\" --write",
+    "fix:lint": "eslint src --fix",
     "eject": "expo eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --quiet --fix"
+    ],
+    "*.{json,md,html}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@chatkitty/react-native-in-app-notification": "^1.1.2",
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-navigation/native": "^5.9.0",
-    "@react-navigation/stack": "^5.13.0",
-    "chatkitty": "^1.5.0",
-    "expo": "^40.0.0",
-    "expo-constants": "^10.0.0",
-    "expo-notifications": "^0.9.0",
-    "expo-permissions": "^11.0.0",
+    "@react-navigation/native": "^5.7.6",
+    "@react-navigation/stack": "^5.9.3",
+    "chatkitty": "^1.4.0",
+    "expo": "~40.0.0",
+    "expo-constants": "^9.3.5",
+    "expo-notifications": "^0.8.2",
+    "expo-permissions": "^10.0.0",
     "expo-status-bar": "~1.0.3",
-    "firebase": "^8.2.3",
+    "firebase": "7.9.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-gesture-handler": "^1.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
+    "react-native-gesture-handler": "^1.8.0",
     "react-native-gifted-chat": "^0.16.3",
-    "react-native-paper": "^4.7.0",
-    "react-native-reanimated": "^1.13.2",
-    "react-native-safe-area-context": "^3.1.9",
-    "react-native-screens": "^2.15.2",
-    "react-native-vector-icons": "^8.0.0",
+    "react-native-paper": "^4.6.0",
+    "react-native-reanimated": "^1.13.1",
+    "react-native-safe-area-context": "^3.1.8",
+    "react-native-screens": "^2.11.0",
+    "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
-  },
-  "private": true
+    "@babel/core": "~7.9.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-import": "^2.22.1",
+    "lint-staged": "^10.5.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1"
+  }
 }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { Divider, List } from 'react-native-paper';
 
-import { kitty } from '../chatkitty';
+import { getChannelDisplayName, kitty } from '../chatkitty';
 import Loading from '../components/Loading';
 
 export default function BrowseChannelsScreen({ navigation }) {
@@ -33,24 +33,24 @@ export default function BrowseChannelsScreen({ navigation }) {
   }
 
   return (
-      <View style={styles.container}>
-        <FlatList
-            data={channels}
-            keyExtractor={(item) => item.id.toString()}
-            ItemSeparatorComponent={() => <Divider />}
-            renderItem={({ item }) => (
-                <List.Item
-                    title={item.name}
-                    description={item.type}
-                    titleNumberOfLines={1}
-                    titleStyle={styles.listTitle}
-                    descriptionStyle={styles.listDescription}
-                    descriptionNumberOfLines={1}
-                    onPress={() => handleJoinChannel(item)}
-                />
-            )}
-        />
-      </View>
+    <View style={styles.container}>
+      <FlatList
+        data={channels}
+        keyExtractor={(item) => item.id.toString()}
+        ItemSeparatorComponent={() => <Divider />}
+        renderItem={({ item }) => (
+          <List.Item
+            title={getChannelDisplayName(item)}
+            description={item.type}
+            titleNumberOfLines={1}
+            titleStyle={styles.listTitle}
+            descriptionStyle={styles.listDescription}
+            descriptionNumberOfLines={1}
+            onPress={() => handleJoinChannel(item)}
+          />
+        )}
+      />
+    </View>
   );
 }
 
