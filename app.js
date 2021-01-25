@@ -1,6 +1,8 @@
 const botones = document.querySelector('#botones');
 const nombreUsuario = document.querySelector('#nombreUsuario');
 const contenidoProtegido = document.querySelector('#contenidoProtegido');
+const formulario = document.querySelector('#formulario');
+const inputChat = document.querySelector('#inputChat');
 
 firebase.auth().onAuthStateChanged( user =>{
     if(user){
@@ -10,9 +12,10 @@ firebase.auth().onAuthStateChanged( user =>{
         `
         nombreUsuario.innerHTML = user.displayName;
         cerrarSesion();
-        contenidoProtegido.innerHTML = `
-            <p class="text-center lead mt-5">Bienvenido ${user.email}</p>
-        `
+        
+        formulario.classList = 'input-group bg-success py-3 fixed-bottom container'
+        contenidoChat(user);
+    
     }else{
         console.log('No existe user');
         botones.innerHTML = /*html*/`
@@ -23,6 +26,7 @@ firebase.auth().onAuthStateChanged( user =>{
         contenidoProtegido.innerHTML = `
             <p class="text-center lead mt-5">Debes iniciar sesión</p>
         `
+        formulario.classList = 'input-group bg-success py-3 fixed-bottom container d-none'
     }
 })
 
@@ -43,5 +47,32 @@ const iniciarSesion = () =>{
         }catch(error){
             console.log(error)
         }
+    })
+}
+
+const contenidoChat = (user) =>{
+    contenidoProtegido.innerHTML = `
+        <p class="text-center lead mt-5">Bienvenido ${user.email}</p>
+    `
+    formulario.addEventListener('submit', (e) =>{
+        e.preventDefault();//al hacer peticion get, con prevent no recarga
+        console.log(inputChat.value);
+        //comprobamos si el usuario escribio algo
+        if(!inputChat.value.trim()){
+            console.log('input vacio');
+            return;
+        }
+        //si en verdad escribio algo entonces: la siguiente promesa
+        firebase.database().ref('chat/').push({
+            texto: inputChat.value,
+            uid: user.uid,
+            fecha: Date.now()
+        })
+        .then(res => {console.log('mensaje guardado')})
+        .catch(e => console.log(e))
+
+        //limpiamos string 
+        inputChat.value = "";
+        
     })
 }

@@ -15,7 +15,7 @@
 
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -42,8 +42,14 @@
             <div id="botones"></div>
         </nav>
 
-        <main id="contenidoProtegido">
-        </main>
+        <main id="contenidoProtegido"></main>
+
+        <form id="formulario">
+            <input id="inputChat" type="text" class="form-control" placeholder="Enviar mensaje">
+            <div class="div-group-append">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </form>
     </div>
 
     <script src="app.js"></script>
