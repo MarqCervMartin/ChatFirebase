@@ -51,9 +51,11 @@ const iniciarSesion = () =>{
 }
 
 const contenidoChat = (user) =>{
+    /*
     contenidoProtegido.innerHTML = `
         <p class="text-center lead mt-5">Bienvenido ${user.email}</p>
     `
+    */
     formulario.addEventListener('submit', (e) =>{
         e.preventDefault();//al hacer peticion get, con prevent no recarga
         console.log(inputChat.value);
@@ -73,6 +75,51 @@ const contenidoChat = (user) =>{
 
         //limpiamos string 
         inputChat.value = "";
+        
+    })
+
+    //recorrer la base de datos firebase
+    firebase.database().ref('chat').orderByChild('fecha')
+        .on('child_added', query =>{
+        //console.log(query.val()); para el caso del evento on
+        console.log(query.val());
+        const val = query.val();
+        //console.log(query)
+        //contenidoProtegido.innerHTML = '';
+        if(val.uid === user.uid){
+            contenidoProtegido.innerHTML += `
+                <div class="d-flex justify-content-end">
+                    <span class="badge rounded-pill bg-primary">${val.texto}</span>
+                </div>
+            `
+        }else{
+            contenidoProtegido.innerHTML += `
+                <div class="d-flex justify-content-start">
+                    <span class="badge rounded-pill bg-secondary">${val.texto}</span>
+                </div>
+            `
+        }
+        //scroll del chat
+        contenidoProtegido.scrollTop = contenidoProtegido.scrollHeight;
+        /*
+        query.forEach(doc => {
+            const val = doc.val();
+            console.log(val)
+            if(val.uid === user.uid){
+                contenidoProtegido.innerHTML += `
+                    <div class="d-flex justify-content-end">
+                        <span class="badge rounded-pill bg-primary">${val.texto}</span>
+                    </div>
+                `
+            }else{
+                contenidoProtegido.innerHTML += `
+                    <div class="d-flex justify-content-start">
+                        <span class="badge rounded-pill bg-secondary">${val.texto}</span>
+                    </div>
+                `
+            }
+        })
+        */
         
     })
 }
