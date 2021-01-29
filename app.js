@@ -4,6 +4,8 @@ const contenidoProtegido = document.querySelector('#contenidoProtegido');
 const formulario = document.querySelector('#formulario');
 const inputChat = document.querySelector('#inputChat');
 
+const usuariosConectados = document.querySelector('#usuariosConectados');
+
 firebase.auth().onAuthStateChanged( user =>{
     if(user){
         console.log(user);
@@ -12,9 +14,11 @@ firebase.auth().onAuthStateChanged( user =>{
         `
         nombreUsuario.innerHTML = user.displayName;
         cerrarSesion();
-        
+        //aparece formulario
         formulario.classList = 'input-group bg-success py-3 fixed-bottom container'
+        guardarUsuario(user);
         contenidoChat(user);
+        usersOnline(user);
     
     }else{
         console.log('No existe user');
@@ -94,32 +98,57 @@ const contenidoChat = (user) =>{
             `
         }else{
             contenidoProtegido.innerHTML += `
-                <div class="d-flex justify-content-start">
+                <div class="d-flex justify-content-center">
                     <span class="badge rounded-pill bg-secondary">${val.texto}</span>
                 </div>
             `
         }
         //scroll del chat
         contenidoProtegido.scrollTop = contenidoProtegido.scrollHeight;
-        /*
-        query.forEach(doc => {
-            const val = doc.val();
-            console.log(val)
-            if(val.uid === user.uid){
-                contenidoProtegido.innerHTML += `
-                    <div class="d-flex justify-content-end">
-                        <span class="badge rounded-pill bg-primary">${val.texto}</span>
-                    </div>
-                `
-            }else{
-                contenidoProtegido.innerHTML += `
-                    <div class="d-flex justify-content-start">
-                        <span class="badge rounded-pill bg-secondary">${val.texto}</span>
-                    </div>
-                `
-            }
-        })
-        */
         
     })
+}
+
+const usersOnline = (user) =>{
+
+    //recorrer la base de datos firebase
+    firebase.database().ref('usuarios')
+        .once('value', query =>{
+        usuariosConectados.innerHTML = '';
+        query.forEach(element => {
+            console.log(element.val());
+            const val = element.val();
+            
+            if(val.uid === user.uid){
+                usuariosConectados.innerHTML += `    
+                    <button type="button" class="list-group-item list-group-item-action active">${val.nombre}
+                        <span class="badge badge-dark badge-pill">${val.nuevosmensajes}</span>
+                    </button>
+                `
+            }else{
+                usuariosConectados.innerHTML += `    
+                    <button type="button" class="list-group-item list-group-item-action">${val.nombre}
+                        <span class="badge badge-dark badge-pill">${val.nuevosmensajes}</span>
+                    </button>
+                `
+            }
+
+        });
+        /*
+        */
+    })
+}
+
+
+const guardarUsuario = (user) =>{
+    usuario = {
+        uid: user.uid,
+        nombre: user.displayName,
+        email: user.email,
+        foto: user.photoURL,
+        nuevosmensajes: 0
+    }
+    firebase.database().ref('usuarios/'+user.uid).set(usuario)
+    .then(res => {console.log('mensaje guardado')})
+    .catch(e => console.log(e))
 }
