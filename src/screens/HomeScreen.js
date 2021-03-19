@@ -81,7 +81,7 @@ export default function HomeScreen({navigation}) {
             {/* <Avatar.Image size={40} source={{uri: item.foto}} /> */}
             <Avatar.Icon size={40} icon="account" />
             <View style={{flexDirection: 'column'}}>
-              <Text style={styles.nombre}>{item.uid}</Text>
+              <Text style={styles.nombre}>{item.displayName}</Text>
               <Text style={styles.lastMessage}>{item.email}</Text>
             </View>
           </View>

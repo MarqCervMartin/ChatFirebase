@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
               console.log(e);
             }
           },
-          register: async (email, password) => {
+          register: async (name, email, password) => {
             try {
               let {user} = await auth().createUserWithEmailAndPassword(
                 email,
@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
               console.log(user);
               const usuario = {
                 uid: user.uid,
+                displayName: name,
                 email: user.email,
                 state: true,
               };

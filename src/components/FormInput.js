@@ -15,9 +15,11 @@ export default function FormInput({labelName, ...rest}) {
       numberOfLines={1}
       {...rest}
       left={
-        labelName == 'Email'
+        labelName == 'Nombre'
+        ? <TextInput.Icon name={() => <Icon name={'laugh-wink'} size={20} />} />
+        : labelName == 'Email' 
         ? <TextInput.Icon name={() => <Icon name={'envelope'} size={20} />} />
-        : <TextInput.Icon name={() => <Icon name={'eye'} size={20} />} />
+        : <TextInput.Icon name={() => <Icon name={'lock'} size={20} />}/>
       }
       theme={{colors: {primary: theme.componentColor }}}
 

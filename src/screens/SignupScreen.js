@@ -10,6 +10,7 @@ import imagesURL from '../theme/url';
 export default function SignupScreen({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const { register } = useContext(AuthContext);
 
   return (
@@ -20,6 +21,12 @@ export default function SignupScreen({navigation}) {
         resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
       />
       <Title style={styles.titleText}>Empezemos!</Title>
+      <FormInput
+        labelName="Nombre"
+        value={name}
+        autoCapitalize="none"
+        onChangeText={(userName) => setName(userName)}
+      />
       <FormInput
         labelName="Email"
         value={email}
@@ -36,7 +43,7 @@ export default function SignupScreen({navigation}) {
         title="Signup"
         modeValue="contained"
         labelStyle={styles.loginButtonLabel}
-        onPress={() => register(email, password)}
+        onPress={() => register(name, email, password)}
       />
       <IconButton
         icon="keyboard-backspace"
