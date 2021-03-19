@@ -63,7 +63,7 @@ export default function HomeScreen({navigation}) {
   useEffect(() => {
     const newArray = Object.values(objOnline);
     setArrayOnline(newArray);
-    console.log(arrayOnline)
+    console.log("Online: ",arrayOnline)
   }, [objOnline]);
 
   // ...rest of the component
@@ -75,7 +75,7 @@ export default function HomeScreen({navigation}) {
       renderItem={({item}) => (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Chat', {keyExtractor: arrayOnline})
+            navigation.navigate('Chat', {keyExtractor: item})
           }>
           <View style={styles.avatar}>
             {/* <Avatar.Image size={40} source={{uri: item.foto}} /> */}

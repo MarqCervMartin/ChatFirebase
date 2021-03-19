@@ -60,16 +60,16 @@ const ChatScreen = ({route, navigation}) => {
     )*/
 
     useEffect(() => {
-        if (user.uid < keyExtractor[0].uid) {
-            setChannel(user.uid + keyExtractor[0].uid);
+        if (user.uid < keyExtractor.uid) {
+            setChannel(user.uid + keyExtractor.uid);
             console.log(channel + ' CHAAANEEEEEEEEEEEEL 1');
             console.log(user.uid);
-            console.log(keyExtractor[0].uid);
+            console.log(keyExtractor.uid);
           } else {
-            setChannel(keyExtractor[0].uid + user.uid);
+            setChannel(keyExtractor.uid + user.uid);
             console.log(channel + ' CHAAANEEEEEEEEEEEEL 2');
             console.log(user.uid);
-            console.log(keyExtractor[0].uid);
+            console.log(keyExtractor.uid);
           }
           const messagesListener = database()
             .ref(`chat/${channel}`)
