@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, FlatList , Text} from 'react-native
 import { Avatar, Divider } from 'react-native-paper';
 import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
+import themes from '../theme/colors';
 
 export default function HomeScreen({navigation}) {
   const keyExtractor = (item, index) => index.toString();
@@ -81,7 +82,7 @@ export default function HomeScreen({navigation}) {
             <Avatar.Icon size={40} icon="account" />
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.nombre}>{item.uid}</Text>
-              <Text style={styles.puesto}>{item.email}</Text>
+              <Text style={styles.lastMessage}>{item.email}</Text>
             </View>
           </View>
           <Divider />
@@ -103,5 +104,20 @@ const styles = StyleSheet.create({
   },
   listDescription: {
     fontSize: 16,
+  },
+  avatar: {
+    flexDirection: 'row',
+    padding: 10,
+  },
+  nombre: {
+    flexDirection: 'column',
+    flex: 8,
+    paddingLeft: 10,
+    paddingTop: 5,
+    color: themes.componentColor,
+  },
+  lastMessage: {
+    paddingLeft: 10,
+    color: 'black',
   },
 });

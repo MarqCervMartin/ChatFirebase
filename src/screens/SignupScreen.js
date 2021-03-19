@@ -1,9 +1,11 @@
 import React, {useState, useContext} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {Title, IconButton} from 'react-native-paper';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
+import theme from '../theme/colors';
+import imagesURL from '../theme/url';
 
 export default function SignupScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -12,7 +14,12 @@ export default function SignupScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Let's get started!</Title>
+      <Image
+        style={styles.image}
+        source={{uri: imagesURL.signupURL}}
+        resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
+      />
+      <Title style={styles.titleText}>Empezemos!</Title>
       <FormInput
         labelName="Email"
         value={email}
@@ -35,7 +42,7 @@ export default function SignupScreen({navigation}) {
         icon="keyboard-backspace"
         size={30}
         style={styles.navButton}
-        color="#5b3a70"
+        color= {theme.text}
         onPress={() => navigation.goBack()}
       />
     </View>
@@ -55,6 +62,7 @@ const styles = StyleSheet.create({
   },
   loginButtonLabel: {
     fontSize: 22,
+    color: theme.text,
   },
   navButtonText: {
     fontSize: 18,
@@ -62,4 +70,10 @@ const styles = StyleSheet.create({
   navButton: {
     marginTop: 10,
   },
+  image:{
+    width: 150,
+    height: 150,
+    borderWidth: 2,
+    borderRadius: 75
+  }
 });

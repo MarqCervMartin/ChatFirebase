@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth';
 import {IconButton} from 'react-native-paper';
 import {StyleSheet, View, ActivityIndicator, Text} from 'react-native';
 import Loading from '../components/Loading';
+import theme from '../theme/colors';
 import {
   GiftedChat,
   Bubble,
@@ -88,10 +89,10 @@ const ChatScreen = ({route, navigation}) => {
             {...props}
             wrapperStyle={{
               right: {
-                backgroundColor: '#6646ee',
+                backgroundColor: theme.componentColor,
               },
               left: {
-                backgroundColor: '#e0e0e0',
+                backgroundColor: theme.white,
               },
             }}
             textStyle={{
@@ -117,7 +118,7 @@ const ChatScreen = ({route, navigation}) => {
         return (
           <Send {...props}>
             <View style={styles.sendingContainer}>
-              <IconButton icon="send-circle" size={32} color="#6646ee" />
+              <IconButton icon="send-circle" size={48} color={theme.componentColor} />
             </View>
           </Send>
         );
@@ -126,7 +127,7 @@ const ChatScreen = ({route, navigation}) => {
       function scrollToBottomComponent() {
         return (
           <View style={styles.bottomComponentContainer}>
-            <IconButton icon="chevron-double-down" size={36} color="#6646ee" />
+            <IconButton icon="chevron-double-down" size={36} color={theme.componentColor} />
           </View>
         );
       }
@@ -158,15 +159,13 @@ const ChatScreen = ({route, navigation}) => {
         };
       }
     
-      
-    
       return (
         <GiftedChat
           messages={messages}
           inverted={false}
           onSend={handleSend}
           user={mapUser(user)}
-          placeholder="Type your message here..."
+          placeholder="   Escribir mensaje..."
           showUserAvatar
           //renderAvatar={renderAvatar}
           alwaysShowSend

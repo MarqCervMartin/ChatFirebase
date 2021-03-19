@@ -4,6 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 import {AuthContext} from './AuthProvider';
 import ChatScreen from '../screens/ChatScreen';
 import {IconButton} from 'react-native-paper';
+import theme from '../theme/colors';
 
 const ChatAppStack = createStackNavigator();
 const ModalStack = createStackNavigator();
@@ -26,17 +27,21 @@ function ChatApp() {
         },
       }}>
       <ChatAppStack.Screen
-        name="Home"
+        name="Chat Home"
         component={HomeScreen}
         options={({navigation}) => ({
           headerLeft: () => (
             <IconButton
               icon="logout"
               size={28}
-              color="#ffffff"
+              color= {theme.white}
               onPress={() => logout()}
             />
           ),
+          headerTintColor: theme.white,
+          headerStyle: {
+            backgroundColor: theme.componentColor,
+          },
         })}
       />
       <ChatAppStack.Screen
@@ -44,6 +49,10 @@ function ChatApp() {
         component={ChatScreen}
         options={({route}) => ({
           title: "Hello",
+          headerTintColor: theme.white,
+          headerStyle: {
+            backgroundColor: theme.componentColor,
+          },
         })}
       />
     </ChatAppStack.Navigator>
