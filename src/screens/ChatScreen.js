@@ -15,7 +15,7 @@ import {
 
 const ChatScreen = ({route, navigation}) => {
     const {keyExtractor} = route.params;
-    console.log("KeyExtractor: ", keyExtractor)
+    //console.log("KeyExtractor: ", keyExtractor)
 
     const [messages, setMessages] = useState([]);
     const [channel, setChannel] = useState();
@@ -42,7 +42,8 @@ const ChatScreen = ({route, navigation}) => {
             },
           })
           .then((res) => {
-            console.log('mensaje guardado');
+            //Aqui despues de enviar mensaje
+            //console.log('mensaje guardado');
           })
           .catch((e) => console.log(e));
         //Update last message: Usuarios
@@ -60,23 +61,17 @@ const ChatScreen = ({route, navigation}) => {
     )*/
 
     useEffect(() => {
-        if (user.uid < keyExtractor.uid) {
+          if (user.uid < keyExtractor.uid) {
             setChannel(user.uid + keyExtractor.uid);
-            console.log(channel + ' CHAAANEEEEEEEEEEEEL 1');
-            console.log(user.uid);
-            console.log(keyExtractor.uid);
           } else {
             setChannel(keyExtractor.uid + user.uid);
-            console.log(channel + ' CHAAANEEEEEEEEEEEEL 2');
-            console.log(user.uid);
-            console.log(keyExtractor.uid);
           }
           const messagesListener = database()
             .ref(`chat/${channel}`)
             .orderByChild('createdAt')
             .limitToLast(20)
             .on('child_added', (snapshot) => {
-                console.log('********AGREGANDO************');
+                //console.log('********AGREGANDO************');
                 setMessages((prevState) => [...prevState, snapshot.val()]);
             });
         return () => database().ref(`chat/${channel}`).off('child_added', messagesListener);

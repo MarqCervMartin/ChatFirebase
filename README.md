@@ -46,6 +46,6 @@ _**Distribuciones debian GNU/Linux**_
 
 ## Expresiones de Gratitud 🎁
 
-* Roberto por las grandez enseñanzas y prepararme para el futuro.
+* Roberto Senior Fullstack React.
 ---
 Con 💚🐴💚por [Martín.](https://github.com/MarqCervMartin)

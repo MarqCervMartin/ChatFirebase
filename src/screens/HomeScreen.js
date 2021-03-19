@@ -63,7 +63,7 @@ export default function HomeScreen({navigation}) {
   useEffect(() => {
     const newArray = Object.values(objOnline);
     setArrayOnline(newArray);
-    console.log("Online: ",arrayOnline)
+    //console.log("Online: ",arrayOnline)
   }, [objOnline]);
 
   // ...rest of the component
