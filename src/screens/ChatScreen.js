@@ -78,7 +78,7 @@ const ChatScreen = ({route, navigation}) => {
                 console.log('********AGREGANDO************');
                 setMessages((prevState) => [...prevState, snapshot.val()]);
             });
-        //return () => database().ref(`chat/${channel}`).off('child_added', messagesListener);
+        return () => database().ref(`chat/${channel}`).off('child_added', messagesListener);
       }, [channel]);
 
     function renderBubble(props) {

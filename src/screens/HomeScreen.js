@@ -12,7 +12,7 @@ export default function HomeScreen({navigation}) {
 
   useEffect(() => {
     //listar usuarios online, nodo estado firebase
-    database()
+    const onChildOnlineAdded = database()
       .ref(`usuarios`)
       .orderByChild('state')
       .limitToLast(50)
@@ -30,7 +30,7 @@ export default function HomeScreen({navigation}) {
         }
       });
 
-    database()
+    const onChildOnlineChanged = database()
       .ref(`usuarios`)
       .on('child_changed', (snap) => {
         //console.log(snap.val());
@@ -51,6 +51,11 @@ export default function HomeScreen({navigation}) {
           });
         }
       });
+      return () =>{
+        database().ref('usuarios').off('child_added', onChildOnlineAdded);
+        database().ref('usuarios').off('child_changed', onChildOnlineChanged);
+      }
+      
       
   }, []);
 
