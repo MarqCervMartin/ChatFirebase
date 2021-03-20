@@ -26,7 +26,7 @@ export default function LoginScreen({navigation}) {
             source={{uri: imagesURL.loginURL}}
             resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
           />
-          <Title style={styles.titleText}>Chat App Firebase</Title>
+          <Title style={styles.titleText}>ChaTerri</Title>
           <FormInput
             labelName="Email"
             value={email}

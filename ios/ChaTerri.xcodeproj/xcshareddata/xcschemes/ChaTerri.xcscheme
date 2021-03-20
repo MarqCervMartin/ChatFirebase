@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ChatFirebase.app"
-               BlueprintName = "ChatFirebase"
-               ReferencedContainer = "container:ChatFirebase.xcodeproj">
+               BuildableName = "ChaTerri.app"
+               BlueprintName = "ChaTerri"
+               ReferencedContainer = "container:ChaTerri.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ChatFirebaseTests.xctest"
-               BlueprintName = "ChatFirebaseTests"
-               ReferencedContainer = "container:ChatFirebase.xcodeproj">
+               BuildableName = "ChaTerriTests.xctest"
+               BlueprintName = "ChaTerriTests"
+               ReferencedContainer = "container:ChaTerri.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ChatFirebase.app"
-            BlueprintName = "ChatFirebase"
-            ReferencedContainer = "container:ChatFirebase.xcodeproj">
+            BuildableName = "ChaTerri.app"
+            BlueprintName = "ChaTerri"
+            ReferencedContainer = "container:ChaTerri.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ChatFirebase.app"
-            BlueprintName = "ChatFirebase"
-            ReferencedContainer = "container:ChatFirebase.xcodeproj">
+            BuildableName = "ChaTerri.app"
+            BlueprintName = "ChaTerri"
+            ReferencedContainer = "container:ChaTerri.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
