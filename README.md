@@ -3,7 +3,7 @@ React Native with Firebase
 
 <img align="right" src="https://i1.wp.com/www.metizsoft.com/wp-content/uploads/2019/02/React-Native-Real-Time-Firebase.jpg" alt="React Native" width="300" height="200" >
 
-El siguiente proyecto es un chat construido con react native cli, se retomo conceptos básicos de ECMA6, React, Firebase Realtime Database, Funcional components, navegación y principalmente Hooks de Satate y de Effect.
+El siguiente proyecto es un chat construido con react native cli, se aplicaron conceptos básicos de ECMA6, React, Firebase Realtime Database, Funcional components, navigation v5 y principalmente Hooks de Satate y de Effect.
 
 Features.
 1. ✅ Login and SignUp
@@ -11,6 +11,11 @@ Features.
 3. ✅ Chat Persona a Persona
 4. ✅ Chat Grupos
 5. ✅ Usuarios Online
+
+
+![XD](https://i.ibb.co/8z8g44Q/Cha-Terri1.webp)
+![XD](https://i.ibb.co/wK9LykP/Cha-Terri2.webp)
+![XD](https://i.ibb.co/DrdXbyr/Cha-Terri3.webp)
 
 ## Comenzando 🚀👨‍💻🚀
 
